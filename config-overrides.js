@@ -10,7 +10,8 @@ module.exports = function override(config, env) {
     modifyVars: {
       '@primary-color': '#1DA57A',
       '@menu-inline-toplevel-item-height': '20px',
-      '@menu-item-height': '20px'
+      '@menu-item-height': '20px',
+      '@layout-body-background': '#fff'
     },
     javascriptEnabled: true
   })(config, env);

@@ -147,7 +147,7 @@ class App extends Component {
           </Header>
           <Content
             style={{
-              padding: '0 0px'
+              padding: '0 0'
             }}
           >
             <Switch>
