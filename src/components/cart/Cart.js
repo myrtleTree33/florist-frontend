@@ -7,6 +7,7 @@ import PageHeader from '../util/PageHeader';
 import CartItem from './CartItem';
 import DeliveryInfo from './DeliveryInfo';
 import PersonalMessage from './PersonalMessage';
+import SpecialRequest from './SpecialRequest';
 
 const Cart = ({ items }) => {
   const handleChange = v => {
@@ -24,6 +25,7 @@ const Cart = ({ items }) => {
         <CartItem onChange={handleChange} quantity={quantity} />
       </div>
       <PersonalMessage />
+      <SpecialRequest />
       <div
         style={{
           float: 'right'
