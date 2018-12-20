@@ -59,12 +59,14 @@ class CartScreen extends Component {
   }
 
   render() {
+    const { history } = this.props;
     const { state, handleChange, handleRemoveItem } = this;
     return (
       <Cart
         cart={state}
         onChange={handleChange}
         onRemoveItem={handleRemoveItem}
+        onDone={() => history.push('/checkout')}
       />
     );
   }

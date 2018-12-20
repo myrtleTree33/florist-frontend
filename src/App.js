@@ -14,6 +14,7 @@ import CartScreen from './screens/Cart';
 import ProfileScreen from './screens/Profile';
 
 import './App.css';
+import CheckoutScreen from './screens/Checkout';
 
 const { Header, Content, Footer } = Layout;
 
@@ -154,6 +155,7 @@ class App extends Component {
               <Route exact path="/" component={HomeScreen} />
               <PrivateRoute path="/cv" component={CvScreen} />
               <Route path="/cart" component={CartScreen} />
+              <Route path="/checkout" component={CheckoutScreen} />
               <Route path="/login" component={LoginScreen} />
               <Route path="/signup" component={SignupScreen} />
               <PrivateRoute path="/profile" component={ProfileScreen} />

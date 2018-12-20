@@ -9,7 +9,7 @@ import DeliveryInfo from './DeliveryInfo';
 import PersonalMessage from './PersonalMessage';
 import SpecialRequest from './SpecialRequest';
 
-const Cart = ({ cart, onChange, onRemoveItem }) => {
+const Cart = ({ cart, onChange, onRemoveItem, onDone }) => {
   const { items, personalMessage, specialRequest } = cart;
 
   const handleChange = (field, e) => {
@@ -46,8 +46,6 @@ const Cart = ({ cart, onChange, onRemoveItem }) => {
             No items in cart. Shop now!
           </div>
         )}
-        {/* <CartItem onChange={handleChange} quantity={quantity} /> */}
-        {/* <CartItem onChange={handleChange} quantity={quantity} /> */}
       </div>
       <PersonalMessage onChange={e => handleChange('personalMessage', e)} />
       <SpecialRequest onChange={e => handleChange('specialRequest', e)} />
@@ -62,6 +60,7 @@ const Cart = ({ cart, onChange, onRemoveItem }) => {
           style={{
             marginTop: '1rem'
           }}
+          onClick={onDone}
         >
           Proceed to checkout
         </Button>
