@@ -1,19 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, Input, Row, Col, Button, Card, Icon } from 'antd';
+import { Modal, Avatar, Input, Row, Col, Button, Card, Icon } from 'antd';
 import './CartItem.css';
 
 const { Group: InputGroup } = Input;
 
-const CartItem = ({ id, name, quantity, onChange }) => {
+const confirm = Modal.confirm;
+
+const CartItem = ({ item, onChange, onRemoveItem }) => {
+  const { id, name, quantity } = item;
   const handleUpdate = e => {
-    onChange(e.target.value);
+    onChange(id, e.target.value);
   };
   const handleDecrement = () => {
-    onChange(quantity - 1);
+    onChange(id, quantity - 1);
   };
   const handleIncrement = () => {
-    onChange(quantity + 1);
+    onChange(id, quantity + 1);
+  };
+  const handleRemoveItem = id => {
+    onRemoveItem(id);
+  };
+
+  const showConfirm = () => {
+    confirm({
+      content: `Are you sure you wish to remove ${name}?`,
+      onOk() {
+        handleRemoveItem(id);
+      },
+      onCancel() {}
+    });
   };
 
   return (
@@ -27,7 +43,7 @@ const CartItem = ({ id, name, quantity, onChange }) => {
           <Avatar shape="square" size={64} icon="user" />
         </Col>
         <Col span={14}>
-          <div>Flower combination A</div>
+          <div>{name}</div>
         </Col>
         <Col
           span={6}
@@ -46,7 +62,7 @@ const CartItem = ({ id, name, quantity, onChange }) => {
               className="no-borderRadius"
               min={1}
               max={10}
-              defaultValue={3}
+              value={quantity}
               onChange={handleUpdate}
               style={{
                 maxWidth: 50
@@ -62,7 +78,12 @@ const CartItem = ({ id, name, quantity, onChange }) => {
           </Button.Group>
         </Col>
         <Col span={1}>
-          <Button shape="circle" icon="close" type="danger" />
+          <Button
+            shape="circle"
+            icon="close"
+            type="danger"
+            onClick={showConfirm}
+          />
         </Col>
       </Row>
     </Card>

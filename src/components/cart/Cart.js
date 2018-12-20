@@ -9,23 +9,48 @@ import DeliveryInfo from './DeliveryInfo';
 import PersonalMessage from './PersonalMessage';
 import SpecialRequest from './SpecialRequest';
 
-const Cart = ({ items }) => {
-  const handleChange = v => {
-    console.log(v);
+const Cart = ({ cart, onChange, onRemoveItem }) => {
+  const { items, personalMessage, specialRequest } = cart;
+
+  const handleChange = (field, e) => {
+    onChange({ field, value: e.target.value });
   };
 
-  const quantity = 5;
+  const handleItemQtyChange = (id, v) => {
+    if (v > -1) {
+      onChange({ field: 'items', id, value: v });
+    }
+  };
+
+  const handleRemoveItem = id => onRemoveItem(id);
 
   return (
     <WideReadableDiv>
       <PageHeader text="Cart" />
       <div>
-        <CartItem onChange={handleChange} quantity={quantity} />
-        <CartItem onChange={handleChange} quantity={quantity} />
-        <CartItem onChange={handleChange} quantity={quantity} />
+        {items.length !== 0 ? (
+          items.map(item => (
+            <CartItem
+              key={item.id}
+              item={item}
+              onChange={handleItemQtyChange}
+              onRemoveItem={handleRemoveItem}
+            />
+          ))
+        ) : (
+          <div
+            style={{
+              textAlign: 'center'
+            }}
+          >
+            No items in cart. Shop now!
+          </div>
+        )}
+        {/* <CartItem onChange={handleChange} quantity={quantity} /> */}
+        {/* <CartItem onChange={handleChange} quantity={quantity} /> */}
       </div>
-      <PersonalMessage />
-      <SpecialRequest />
+      <PersonalMessage onChange={e => handleChange('personalMessage', e)} />
+      <SpecialRequest onChange={e => handleChange('specialRequest', e)} />
       <div
         style={{
           float: 'right'
