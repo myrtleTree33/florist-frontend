@@ -3,15 +3,18 @@ import PropTypes from 'prop-types';
 import { Button, List } from 'antd';
 import { Link } from 'react-router-dom';
 
-const CartWidget = ({ items }) => {
+const CartWidget = ({ cart, showCheckoutBtn = true }) => {
+  const cart2 = cart || {};
+  const { items = [] } = cart2;
+
   return (
     <div
       style={{
-        width: 400,
+        width: '100%',
         maxWidth: 400
       }}
     >
-      You have {items.length} items.
+      {showCheckoutBtn ? <div>You have {items.length} items.</div> : <div />}
       <List
         itemLayout="horizontal"
         dataSource={items}
@@ -27,7 +30,8 @@ const CartWidget = ({ items }) => {
 
             <span
               style={{
-                width: 100
+                width: '100%',
+                maxWidth: 100
               }}
             >
               <img
@@ -41,15 +45,19 @@ const CartWidget = ({ items }) => {
           </List.Item>
         )}
       />
-      <Button
-        type="primary"
-        block
-        style={{
-          marginTop: '.5rem'
-        }}
-      >
-        <Link to="/cart">Checkout</Link>
-      </Button>
+      {showCheckoutBtn ? (
+        <Button
+          type="primary"
+          block
+          style={{
+            marginTop: '.5rem'
+          }}
+        >
+          <Link to="/cart">Checkout</Link>
+        </Button>
+      ) : (
+        <div />
+      )}
     </div>
   );
 };

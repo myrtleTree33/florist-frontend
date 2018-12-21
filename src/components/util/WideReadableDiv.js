@@ -9,7 +9,7 @@ const WideReadableDiv = ({ children }) => (
     <div
       style={{
         margin: 'auto',
-        width: 1072,
+        width: '100%',
         maxWidth: 1072
       }}
     >

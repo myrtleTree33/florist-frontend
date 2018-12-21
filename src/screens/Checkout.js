@@ -11,12 +11,16 @@ class CheckoutScreen extends Component {
         {
           id: '13242',
           name: 'flower config A',
-          quantity: 3
+          quantity: 3,
+          imgSrc:
+            'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
         },
         {
           id: '1231221',
           name: 'flower config B',
-          quantity: 5
+          quantity: 5,
+          imgSrc:
+            'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
         }
       ],
       personalMessage: 'Personal message field',
@@ -25,8 +29,12 @@ class CheckoutScreen extends Component {
   }
 
   render() {
+    const onSubmit = values => {
+      console.log(values);
+    };
+
     const { state } = this;
-    return <Checkout cart={state} />;
+    return <Checkout cart={state} onSubmit={onSubmit} />;
   }
 }
 

@@ -141,7 +141,23 @@ class App extends Component {
                     lineHeight: '64px'
                   }}
                 >
-                  <Link to="/login">Login</Link>
+                  <Menu.Item key="9.1">
+                    <Popover
+                      content={<CartWidgetScreen />}
+                      placement="bottomRight"
+                    >
+                      <Link to="/cart">
+                        <Icon
+                          type="shopping-cart"
+                          style={{ fontSize: '1.2rem' }}
+                        />
+                      </Link>
+                    </Popover>
+                  </Menu.Item>
+
+                  <Menu.Item key="9.2">
+                    <Link to="/login">Login</Link>
+                  </Menu.Item>
                 </Menu>
               )}
             </Menu>
@@ -164,7 +180,7 @@ class App extends Component {
           <Footer
             style={{
               textAlign: 'center',
-              margin: '2rem 0 1rem 0'
+              margin: '7rem 0 1rem 0'
             }}
           >
             <Row

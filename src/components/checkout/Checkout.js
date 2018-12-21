@@ -1,31 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'antd';
+import { Row, Col } from 'antd';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 import WideReadableDiv from '../util/WideReadableDiv';
 import PageHeader from '../util/PageHeader';
+import AddressForm from './AddressForm';
+import CartSummary from './CartSummary';
 
-const Checkout = ({ cart }) => {
-  const { items, personalMessage, specialRequest } = cart;
-
+const Checkout = ({ cart, onSubmit }) => {
   return (
     <WideReadableDiv>
       <PageHeader text="Checkout" />
-      <div
-        style={{
-          float: 'right'
-        }}
-      >
-        <Button
-          type="primary"
-          size="large"
-          style={{
-            marginTop: '1rem'
-          }}
-        >
-          Proceed to payment
-        </Button>
-      </div>
+
+      <BrowserView>
+        <Row>
+          <Col span={18}>
+            <AddressForm onSubmit={onSubmit} />
+          </Col>
+          <Col span={6}>
+            <CartSummary cart={cart} />
+          </Col>
+        </Row>
+      </BrowserView>
+      <MobileView>
+        <AddressForm onSubmit={onSubmit} />
+      </MobileView>
     </WideReadableDiv>
   );
 };
