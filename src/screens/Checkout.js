@@ -24,13 +24,14 @@ class CheckoutScreen extends Component {
         }
       ],
       personalMessage: 'Personal message field',
-      specialRequest: 'Special request field'
+      specialRequest: 'Special request field',
+      checkoutDetails: null
     };
   }
 
   render() {
-    const onSubmit = values => {
-      console.log(values);
+    const onSubmit = checkoutDetails => {
+      this.setState({ checkoutDetails });
     };
 
     const { state } = this;

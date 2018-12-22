@@ -15,10 +15,10 @@ const Checkout = ({ cart, onSubmit }) => {
 
       <BrowserView>
         <Row>
-          <Col span={18}>
+          <Col span={16}>
             <AddressForm onSubmit={onSubmit} />
           </Col>
-          <Col span={6}>
+          <Col span={8}>
             <CartSummary cart={cart} />
           </Col>
         </Row>

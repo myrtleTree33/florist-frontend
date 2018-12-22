@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ReadingDiv from '../util/ReadingDiv';
+import PageHeader from '../util/PageHeader';
 
 const Profile = () => {
   return (
     <div>
-      <ReadingDiv>
-        <div>This is the profile component</div>
-      </ReadingDiv>
+      <PageHeader text="Profile" headerSize={1} />
+      <ReadingDiv>hihi</ReadingDiv>
     </div>
   );
 };

@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, List } from 'antd';
+import { Divider, Badge, Button, List } from 'antd';
 import { Link } from 'react-router-dom';
+import SideSpan from '../util/SideSpan';
+import SideSpanClear from '../util/SideSpanClear';
+
+import './CartWidget.css';
 
 const CartWidget = ({ cart, showCheckoutBtn = true }) => {
   const cart2 = cart || {};
@@ -34,17 +38,96 @@ const CartWidget = ({ cart, showCheckoutBtn = true }) => {
                 maxWidth: 100
               }}
             >
-              <img
+              <Badge
+                count={0}
+                showZero
                 style={{
-                  width: '100%'
+                  backgroundColor: '#fff',
+                  color: '#999',
+                  boxShadow: '0 0 0 1px #d9d9d9 inset'
                 }}
-                alt="logo"
-                src={item.imgSrc}
-              />
+              >
+                <img
+                  style={{
+                    width: '100%'
+                  }}
+                  alt="logo"
+                  src={item.imgSrc}
+                />
+              </Badge>
             </span>
           </List.Item>
         )}
       />
+
+      <div
+        style={{
+          margin: '1.2rem 0'
+        }}
+      >
+        <div>
+          <SideSpan align="left">
+            <b>Subtotal: </b>
+          </SideSpan>
+          <SideSpan align="right">
+            <span
+              style={{
+                marginLeft: '1.4rem'
+              }}
+            >
+              ${'0.00'}
+            </span>
+          </SideSpan>
+          <SideSpanClear />
+        </div>
+
+        <div>
+          <SideSpan align="left">
+            <b>Shipping: </b>
+          </SideSpan>
+          <SideSpan align="right">
+            <span
+              style={{
+                marginLeft: '1.4rem'
+              }}
+            >
+              ${'0.00'}
+            </span>
+          </SideSpan>
+          <SideSpanClear />
+        </div>
+
+        <Divider />
+
+        <div
+          style={{
+            marginTop: '1.4rem'
+          }}
+        >
+          <SideSpan align="left">
+            <b
+              style={{
+                fontSize: '1.5em'
+              }}
+            >
+              Total:{' '}
+            </b>
+          </SideSpan>
+          <SideSpan align="right">
+            <span className="text-note">SGD</span>
+            <span
+              style={{
+                fontSize: '1.5em',
+                marginLeft: '1.4rem'
+              }}
+            >
+              ${'0.00'}
+            </span>
+          </SideSpan>
+          <SideSpanClear />
+        </div>
+      </div>
+
       {showCheckoutBtn ? (
         <Button
           type="primary"

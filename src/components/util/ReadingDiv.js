@@ -11,7 +11,7 @@ const ReadingDiv = ({ children }) => (
     <div
       style={{
         margin: '2rem 2rem',
-        width: 1024,
+        width: '100%',
         maxWidth: 1024,
         minHeight: '80vh'
       }}
