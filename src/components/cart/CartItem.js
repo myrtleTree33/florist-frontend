@@ -8,7 +8,7 @@ const { Group: InputGroup } = Input;
 const confirm = Modal.confirm;
 
 const CartItem = ({ item, onChange, onRemoveItem }) => {
-  const { id, name, quantity } = item;
+  const { id, name, quantity, imgSrc } = item;
   const handleUpdate = e => {
     onChange(id, e.target.value);
   };
@@ -40,7 +40,7 @@ const CartItem = ({ item, onChange, onRemoveItem }) => {
     >
       <Row className="vertical-align-container">
         <Col span={3}>
-          <Avatar shape="square" size={64} icon="user" />
+          <Avatar shape="square" size={64} icon="tags" src={imgSrc} />
         </Col>
         <Col span={14}>
           <div>{name}</div>

@@ -14,8 +14,7 @@ const CartWidget = ({ cart, showCheckoutBtn = true }) => {
   return (
     <div
       style={{
-        width: '100%',
-        maxWidth: 400
+        width: 400
       }}
     >
       {showCheckoutBtn ? <div>You have {items.length} items.</div> : <div />}
@@ -35,6 +34,7 @@ const CartWidget = ({ cart, showCheckoutBtn = true }) => {
             <span
               style={{
                 width: '100%',
+                textAlign: 'right',
                 maxWidth: 100
               }}
             >
@@ -49,7 +49,8 @@ const CartWidget = ({ cart, showCheckoutBtn = true }) => {
               >
                 <img
                   style={{
-                    width: '100%'
+                    width: '100%',
+                    maxWidth: 50
                   }}
                   alt="logo"
                   src={item.imgSrc}

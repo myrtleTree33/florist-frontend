@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import update from 'immutability-helper';
 import { connect } from 'react-redux';
 
 import Cart from '../components/cart/Cart';
@@ -60,7 +59,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // handleLogout: () => dispatch(userLogout())
     cartSetField: ({ field, value }) =>
       dispatch(cartSetField({ field, value })),
     cartSetItemQty: ({ id, quantity }) =>

@@ -1,41 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import Checkout from '../components/checkout/Checkout';
 
 class CheckoutScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      items: [
-        {
-          id: '13242',
-          name: 'flower config A',
-          quantity: 3,
-          imgSrc:
-            'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
-        },
-        {
-          id: '1231221',
-          name: 'flower config B',
-          quantity: 5,
-          imgSrc:
-            'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
-        }
-      ],
-      personalMessage: 'Personal message field',
-      specialRequest: 'Special request field',
-      checkoutDetails: null
-    };
   }
 
   render() {
-    const onSubmit = checkoutDetails => {
-      this.setState({ checkoutDetails });
+    const onSubmit = deliveryDetails => {
+      const order = {
+        deliveryDetails,
+        cart
+      };
+      console.log(order);
     };
-
-    const { state } = this;
-    return <Checkout cart={state} onSubmit={onSubmit} />;
+    const { cart } = this.props;
+    return <Checkout cart={cart} onSubmit={onSubmit} />;
   }
 }
 
@@ -43,4 +26,17 @@ CheckoutScreen.propTypes = {
   //   name: PropTypes.string.isRequired
 };
 
-export default CheckoutScreen;
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CheckoutScreen);

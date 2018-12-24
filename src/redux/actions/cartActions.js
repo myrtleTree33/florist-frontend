@@ -7,8 +7,8 @@ import {
 
 export function cartAdd({ id, quantity }) {
   // TODO replace placeholders
-  const name = 'bla';
-  const imgSrc = 'img.jpg';
+  const name = 'flower config A';
+  const imgSrc = 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg';
   return {
     type: CART_ADD,
     payload: { id, name, quantity, imgSrc }

@@ -9,7 +9,7 @@ const ReadableDiv = ({ children }) => (
     <div
       style={{
         margin: 'auto',
-        width: 1024,
+        width: '100%',
         maxWidth: 1024
       }}
     >

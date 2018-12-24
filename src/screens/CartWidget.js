@@ -1,29 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import CartWidget from '../components/cart/CartWidget';
 
-const CartWidgetScreen = ({}) => {
-  const items = [
-    {
-      id: '13242',
-      name: 'flower config A',
-      imgSrc:
-        'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
-    },
-    {
-      id: '13242',
-      name: 'flower config B',
-      imgSrc:
-        'https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png'
-    }
-  ];
-
-  return <CartWidget items={items} />;
+const CartWidgetScreen = ({ cart }) => {
+  return <CartWidget cart={cart} />;
 };
 
 CartWidgetScreen.propTypes = {
   //   name: PropTypes.string.isRequired
 };
 
-export default CartWidgetScreen;
+const mapStateToProps = state => {
+  return {
+    cart: state.cart
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartWidgetScreen);

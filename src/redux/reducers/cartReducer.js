@@ -15,17 +15,18 @@ const dummyState = {
     {
       id: '13242',
       name: 'flower config A',
-      quantity: 9
+      quantity: 9,
+      imgSrc: 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg'
     },
     {
       id: '1231221',
       name: 'flower config B',
-      quantity: 5
+      quantity: 5,
+      imgSrc: 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg'
     }
   ],
   personalMessage: 'Personal message field',
-  specialRequest: 'Special request field',
-  checkoutDetails: {}
+  specialRequest: 'Special request field'
 };
 
 // of the shape:
@@ -33,9 +34,9 @@ const dummyState = {
 //   items: {},
 //   personalMessage: '',
 //   specialRequest: '',
-//   checkoutDetails: ''
 // }
-const initialState = cartStr || dummyState;
+// const initialState = cartStr || dummyState;
+const initialState = dummyState;
 
 function cartSetItemQty(state, action) {
   const stateNew = action.payload;
