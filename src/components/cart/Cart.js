@@ -5,12 +5,11 @@ import { Button, List } from 'antd';
 import WideReadableDiv from '../util/WideReadableDiv';
 import PageHeader from '../util/PageHeader';
 import CartItem from './CartItem';
-import DeliveryInfo from './DeliveryInfo';
 import PersonalMessage from './PersonalMessage';
 import SpecialRequest from './SpecialRequest';
 
 const Cart = ({ cart, onChange, onRemoveItem, onDone }) => {
-  const { items, personalMessage, specialRequest } = cart;
+  const { items } = cart;
 
   const handleChange = (field, e) => {
     onChange({ field, value: e.target.value });
@@ -47,8 +46,14 @@ const Cart = ({ cart, onChange, onRemoveItem, onDone }) => {
           </div>
         )}
       </div>
-      <PersonalMessage onChange={e => handleChange('personalMessage', e)} />
-      <SpecialRequest onChange={e => handleChange('specialRequest', e)} />
+      <PersonalMessage
+        cart={cart}
+        onChange={e => handleChange('personalMessage', e)}
+      />
+      <SpecialRequest
+        cart={cart}
+        onChange={e => handleChange('specialRequest', e)}
+      />
       <div
         style={{
           float: 'right'

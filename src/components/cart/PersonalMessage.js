@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Button, Card } from 'antd';
 
-const PersonalMessage = ({ onChange }) => {
+const PersonalMessage = ({ cart, onChange }) => {
   return (
     <Card
       style={{
@@ -11,6 +11,7 @@ const PersonalMessage = ({ onChange }) => {
     >
       <h2>Personalized message</h2>
       <Input.TextArea
+        defaultValue={cart.personalMessage}
         onChange={onChange}
         placeholder="Have a message?  Pen it down!"
         rows={4}

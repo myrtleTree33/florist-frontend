@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Card } from 'antd';
 
-const SpecialRequest = ({ onChange }) => {
+const SpecialRequest = ({ cart, onChange }) => {
   return (
     <Card
       style={{
@@ -11,6 +11,7 @@ const SpecialRequest = ({ onChange }) => {
     >
       <h2>Special request</h2>
       <Input.TextArea
+        defaultValue={cart.specialRequest}
         onChange={onChange}
         placeholder="Have a special request?  Let us know!"
         rows={4}
