@@ -7,11 +7,11 @@ import Viewer from './viewer/Viewer';
 import Search from './search/Search';
 import Hero from './Hero';
 
-const Home = () => {
+const Home = ({ items, history }) => {
   return (
     <div>
       <Hero />
-      <Viewer />
+      <Viewer items={items} history={history} />
     </div>
   );
 };

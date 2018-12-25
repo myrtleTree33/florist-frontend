@@ -15,6 +15,7 @@ import ProfileScreen from './screens/Profile';
 
 import './App.css';
 import CheckoutScreen from './screens/Checkout';
+import ItemScreen from './screens/Item';
 
 const { Header, Content, Footer } = Layout;
 
@@ -170,6 +171,10 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={HomeScreen} />
               <PrivateRoute path="/cv" component={CvScreen} />
+              <Switch>
+                <Redirect from="/item/" to="/" exact />
+                <Route path="/item/:id" component={ItemScreen} />
+              </Switch>
               <Route path="/cart" component={CartScreen} />
               <Route path="/checkout" component={CheckoutScreen} />
               <Route path="/login" component={LoginScreen} />

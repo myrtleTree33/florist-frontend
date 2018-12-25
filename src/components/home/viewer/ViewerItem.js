@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import SideSpan from '../../util/SideSpan';
 import SideSpanClear from '../../util/SideSpanClear';
 
-const ViewerItem = item => {
+const ViewerItem = ({ item, history }) => {
   const { id, imgSrc, price, description } = item;
   const { currency, value } = price || {};
   const cost = `$${value}`;
@@ -36,7 +36,7 @@ const ViewerItem = item => {
           <div>{description}</div>
         </SideSpan>
         <SideSpan align="right">
-          <Button>Shop</Button>
+          <Button onClick={() => history.push(`/item/${id}`)}>Shop</Button>
         </SideSpan>
         <SideSpanClear />
       </div>

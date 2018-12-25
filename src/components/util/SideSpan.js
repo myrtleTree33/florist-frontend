@@ -1,8 +1,9 @@
 import React from 'react';
 
-const SideSpan = ({ align = 'left', children }) => (
+const SideSpan = ({ align = 'left', children, style }) => (
   <span
     style={{
+      ...style,
       float: align
     }}
   >
