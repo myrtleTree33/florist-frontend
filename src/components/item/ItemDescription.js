@@ -17,7 +17,7 @@ const ItemDescription = ({ item }) => {
               fontSize: '2rem'
             }}
           >
-            {name}
+            <h1>{name}</h1>
           </span>
         </SideSpan>
         <SideSpan align="right">
