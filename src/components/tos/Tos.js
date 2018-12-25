@@ -5,13 +5,13 @@ import ReadingDiv from '../util/ReadingDiv';
 import WideReadableDiv from '../util/WideReadableDiv';
 import PageHeader from '../util/PageHeader';
 
-const About = () => {
+const Tos = () => {
   return (
     <WideReadableDiv>
-      <PageHeader text="About us" />
-      <div>This is the about component</div>
+      <PageHeader text="Terms of Service" />
+      <div>This is the terms of service component</div>
     </WideReadableDiv>
   );
 };
 
-export default About;
+export default Tos;

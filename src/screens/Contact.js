@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Contact from '../components/contact/contact';
+import Contact from '../components/contact/Contact';
 
 const ContactScreen = ({}) => {
   return <Contact />;

@@ -5,11 +5,9 @@ import SideSpan from '../../util/SideSpan';
 import SideSpanClear from '../../util/SideSpanClear';
 
 const ViewerItem = ({ item, history }) => {
-  const { id, imgSrc, price, description } = item;
+  const { id, imgSrc, price, landscapeImg, gist } = item;
   const { currency, value } = price || {};
   const cost = `$${value}`;
-
-  const mainImg = imgSrc[0];
 
   return (
     <div
@@ -18,12 +16,13 @@ const ViewerItem = ({ item, history }) => {
       }}
     >
       <img
-        src={mainImg}
-        alt={description}
+        src={landscapeImg}
+        alt={gist}
         style={{
           maxWidth: '100%',
           height: 'auto'
         }}
+        onClick={() => history.push(`/item/${id}`)}
       />
 
       <div
@@ -33,7 +32,7 @@ const ViewerItem = ({ item, history }) => {
       >
         <SideSpan align="left">
           <div>Name - {cost}</div>
-          <div>{description}</div>
+          <div>{gist}</div>
         </SideSpan>
         <SideSpan align="right">
           <Button onClick={() => history.push(`/item/${id}`)}>Shop</Button>

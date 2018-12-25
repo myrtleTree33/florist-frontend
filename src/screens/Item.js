@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Item from '../components/item/Item';
+import { cartAdd } from '../redux/actions/cartActions';
 
-const ItemScreen = ({ match }) => {
+const ItemScreen = ({ history, match, cartAdd }) => {
   const id = match.params.id;
 
   // TODO replace with call to API
@@ -23,11 +26,24 @@ const ItemScreen = ({ match }) => {
     description: 'The perfect bloom to suit your day.'
   };
 
-  return <Item item={item} />;
+  return <Item history={history} item={item} cartAdd={cartAdd} />;
 };
 
 ItemScreen.propTypes = {
   //   name: PropTypes.string.isRequired
 };
 
-export default ItemScreen;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    cartAdd: ({ id }) => dispatch(cartAdd({ id, quantity: 1 }))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(ItemScreen));

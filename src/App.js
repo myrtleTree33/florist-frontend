@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { Icon, Dropdown, Layout, Menu, Popover, Row, Col } from 'antd';
+import { Icon, Dropdown, Layout, Menu, Popover, Row, Col, Divider } from 'antd';
 import { connect } from 'react-redux';
 
-import { userLogin, userLogout } from './redux/actions/userActions';
+import { userLogout } from './redux/actions/userActions';
 
 import HomeScreen from './screens/Home';
-import CvScreen from './screens/Cv';
+import AboutScreen from './screens/About';
 import LoginScreen from './screens/Login';
 import SignupScreen from './screens/Signup';
 import CartWidgetScreen from './screens/CartWidget';
 import CartScreen from './screens/Cart';
 import ProfileScreen from './screens/Profile';
+import TosScreen from './screens/Tos';
+import ContactScreen from './screens/Contact';
 
 import './App.css';
 import CheckoutScreen from './screens/Checkout';
 import ItemScreen from './screens/Item';
+import WideReadableDiv from './components/util/WideReadableDiv';
 
 const { Header, Content, Footer } = Layout;
 
@@ -101,9 +104,6 @@ class App extends Component {
               <Menu.Item key="1">
                 <Link to="/">Home</Link>
               </Menu.Item>
-              <Menu.Item key="2">
-                <Link to="/cv">CV</Link>
-              </Menu.Item>
               {isAuthenticated() ? (
                 <Menu
                   style={{
@@ -170,111 +170,102 @@ class App extends Component {
           >
             <Switch>
               <Route exact path="/" component={HomeScreen} />
-              <PrivateRoute path="/cv" component={CvScreen} />
-              <Switch>
-                <Redirect from="/item/" to="/" exact />
-                <Route path="/item/:id" component={ItemScreen} />
-              </Switch>
               <Route path="/cart" component={CartScreen} />
+              <Route path="/about" component={AboutScreen} />
               <Route path="/checkout" component={CheckoutScreen} />
               <Route path="/login" component={LoginScreen} />
               <Route path="/signup" component={SignupScreen} />
+              <Route path="/contact" component={ContactScreen} />
+              <Route path="/tos" component={TosScreen} />
               <PrivateRoute path="/profile" component={ProfileScreen} />
+            </Switch>
+            <Switch>
+              <Redirect from="/item/" to="/" exact />
+              <Route path="/item/:id" component={ItemScreen} />
             </Switch>
           </Content>
           <Footer
             style={{
               textAlign: 'center',
-              margin: '7rem 0 1rem 0'
+              marginBottom: '2.5rem'
             }}
           >
-            <Row
-              gutter={16}
-              style={{
-                textAlign: 'left',
-                fontSize: '.8em'
-              }}
-            >
-              <Col className="gutter-row" span={6}>
-                <div
-                  className="gutter-box"
-                  style={{
-                    marginBottom: '.5rem'
-                  }}
-                >
-                  <b>General</b>
-                </div>
-                <Link to="/about" className="footerLink">
-                  <div className="gutter-box">About us</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Privacy policy</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Refund policy</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Terms of service</div>
-                </Link>
-              </Col>
-              <Col className="gutter-row" span={6}>
-                <div
-                  className="gutter-box"
-                  style={{
-                    marginBottom: '.5rem'
-                  }}
-                >
-                  <b>Collections</b>
-                </div>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">For her</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">For him</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Graduation</div>
-                </Link>
-              </Col>
-              <Col className="gutter-row" span={6}>
-                <div
-                  className="gutter-box"
-                  style={{
-                    marginBottom: '.5rem'
-                  }}
-                >
-                  <b>Products</b>
-                </div>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Fresh flowers</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Dried flowers</div>
-                </Link>
-              </Col>
-              <Col className="gutter-row" span={6}>
-                <div
-                  className="gutter-box"
-                  style={{
-                    marginBottom: '.5rem'
-                  }}
-                >
-                  <b>Let us help you</b>
-                </div>
-                <Link to="/profile" className="footerLink">
-                  <div className="gutter-box">My account</div>
-                </Link>
-                <Link to="/" className="footerLink">
-                  <div className="gutter-box">Contact us</div>
-                </Link>
-              </Col>
-            </Row>
+            <Divider />
+            <WideReadableDiv>
+              <Row
+                gutter={16}
+                style={{
+                  textAlign: 'left',
+                  fontSize: '.8em'
+                }}
+              >
+                <Col className="gutter-row" span={8}>
+                  <div
+                    className="gutter-box"
+                    style={{
+                      marginBottom: '.5rem'
+                    }}
+                  >
+                    <b>General</b>
+                  </div>
+                  <Link to="/about" className="footerLink">
+                    <div className="gutter-box">About us</div>
+                  </Link>
+                  <Link to="/tos" className="footerLink">
+                    <div className="gutter-box">Terms of service</div>
+                  </Link>
+                </Col>
+                <Col className="gutter-row" span={8}>
+                  <div
+                    className="gutter-box"
+                    style={{
+                      marginBottom: '.5rem'
+                    }}
+                  >
+                    <b>Products</b>
+                  </div>
+                  <Link to="/" className="footerLink">
+                    <div className="gutter-box">Be mine?</div>
+                  </Link>
+                  <Link to="/" className="footerLink">
+                    <div className="gutter-box">Anniversaries</div>
+                  </Link>
+                  <Link to="/" className="footerLink">
+                    <div className="gutter-box">Birthdays</div>
+                  </Link>
+                </Col>
+                <Col className="gutter-row" span={8}>
+                  <div
+                    className="gutter-box"
+                    style={{
+                      marginBottom: '.5rem'
+                    }}
+                  >
+                    <b>Let us help you</b>
+                  </div>
+                  <Link to="/profile" className="footerLink">
+                    <div className="gutter-box">My account</div>
+                  </Link>
+                  <Link to="/contact" className="footerLink">
+                    <div className="gutter-box">Contact us</div>
+                  </Link>
+                </Col>
+              </Row>
+            </WideReadableDiv>
             <div
               style={{
+                fontSize: '.8em',
                 marginTop: '3.2rem'
               }}
             >
-              Made in Singapore
+              <a
+                href="http://www.21roses.co"
+                style={{
+                  color: '#212121'
+                }}
+              >
+                A member of 21roses.co. Minted in Singapore.
+              </a>
             </div>
           </Footer>
         </Layout>

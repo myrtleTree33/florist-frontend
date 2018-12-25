@@ -39,7 +39,7 @@ const CartWidget = ({ cart, showCheckoutBtn = true }) => {
               }}
             >
               <Badge
-                count={0}
+                count={item.quantity}
                 showZero
                 style={{
                   backgroundColor: '#fff',

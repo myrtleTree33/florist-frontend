@@ -6,18 +6,26 @@ import MarginDiv from '../util/MarginDiv';
 import ImageCarousel from './ImageCarousel';
 import ItemDescription from './ItemDescription';
 import WideReadableDiv from '../util/WideReadableDiv';
+import { isBrowser, isMobile } from 'react-device-detect';
 
-const Item = ({ item }) => {
+const Item = ({ history, item, cartAdd }) => {
   return (
     <WideReadableDiv>
-      <Row>
-        <Col span={12}>
+      {isMobile ? (
+        <div>
           <ImageCarousel item={item} />
-        </Col>
-        <Col span={12}>
-          <ItemDescription item={item} />
-        </Col>
-      </Row>
+          <ItemDescription item={item} history={history} cartAdd={cartAdd} />
+        </div>
+      ) : (
+        <Row>
+          <Col span={12}>
+            <ImageCarousel item={item} />
+          </Col>
+          <Col span={12}>
+            <ItemDescription item={item} history={history} cartAdd={cartAdd} />
+          </Col>
+        </Row>
+      )}
     </WideReadableDiv>
   );
 };

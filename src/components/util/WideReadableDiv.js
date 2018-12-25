@@ -1,11 +1,7 @@
 import React from 'react';
 
-const WideReadableDiv = ({ children, maxWidth = 1072 }) => (
-  <div
-    style={{
-      minHeight: '80vh'
-    }}
-  >
+const WideReadableDiv = ({ children, maxWidth = 1072, style }) => (
+  <div style={{ ...style }}>
     <div
       style={{
         margin: 'auto',

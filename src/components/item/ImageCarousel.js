@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MarginDiv from '../util/MarginDiv';
 
+import './imageCarousel.css';
+import { isMobile } from 'react-device-detect';
+
 class ImageCarousel extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +23,7 @@ class ImageCarousel extends Component {
     const { item } = this.props;
     const { id, name, imgSrc, price, description } = item;
     const { currency, value } = price;
+    let resolvedImgSrc = isMobile ? imgSrc.slice(0, 2) : imgSrc;
 
     return (
       <div
@@ -29,7 +33,7 @@ class ImageCarousel extends Component {
       >
         <div>
           <img
-            src={imgSrc[x]}
+            src={resolvedImgSrc[x]}
             style={{
               maxWidth: '100%'
             }}
@@ -41,7 +45,7 @@ class ImageCarousel extends Component {
             textAlign: 'center'
           }}
         >
-          {imgSrc.map((im, i) => (
+          {resolvedImgSrc.map((im, i) => (
             <span
               style={{
                 margin: '.5rem'
@@ -52,6 +56,7 @@ class ImageCarousel extends Component {
                 style={{
                   maxWidth: 70
                 }}
+                className={i !== x ? 'carousel-item' : 'carousel-item-selected'}
                 onClick={() => this.handleChange(i)}
               />
             </span>

@@ -31,18 +31,6 @@ const AddressForm = ({ form, onSubmit }) => {
           maxWidth: 500
         }}
       >
-        <FormItem>
-          {getFieldDecorator('email', {
-            rules: [{ required: true, message: 'Please input your email!' }]
-          })(<Input placeholder="Email" />)}
-        </FormItem>
-
-        <FormItem>
-          {getFieldDecorator('phoneNumber', {
-            rules: [{ required: true, message: 'Please input your email!' }]
-          })(<Input placeholder="Phone number" />)}
-        </FormItem>
-
         <Row gutter={24}>
           <Col span={12}>
             <FormItem>
@@ -50,10 +38,10 @@ const AddressForm = ({ form, onSubmit }) => {
                 rules: [
                   {
                     required: true,
-                    message: 'Please specify your first name.'
+                    message: "Please specify recipient's first name."
                   }
                 ]
-              })(<Input placeholder="First name" />)}
+              })(<Input placeholder="Recipient's first name" />)}
             </FormItem>
           </Col>
 
@@ -63,23 +51,35 @@ const AddressForm = ({ form, onSubmit }) => {
                 rules: [
                   {
                     required: true,
-                    message: 'Please specify your last name.'
+                    message: "Please specify recipient's last name."
                   }
                 ]
-              })(<Input placeholder="Last name" />)}
+              })(<Input placeholder="Recipient's last name" />)}
             </FormItem>
           </Col>
         </Row>
 
         <FormItem>
+          {getFieldDecorator('phoneNumber', {
+            rules: [
+              { required: true, message: "Please input recipient's email!" }
+            ]
+          })(<Input placeholder="Recipient's phone number" />)}
+        </FormItem>
+
+        <FormItem>
           {getFieldDecorator('address', {
-            rules: [{ required: true, message: 'Please input your address!' }]
+            rules: [
+              { required: true, message: "Please input recipient's address!" }
+            ]
           })(<Input placeholder="Address" />)}
         </FormItem>
 
         <FormItem>
           {getFieldDecorator('city', {
-            rules: [{ required: true, message: 'Please input your city!' }]
+            rules: [
+              { required: true, message: "Please input recipient's city!" }
+            ]
           })(<Input placeholder="City" />)}
         </FormItem>
 
@@ -88,7 +88,10 @@ const AddressForm = ({ form, onSubmit }) => {
             <FormItem>
               {getFieldDecorator('select', {
                 rules: [
-                  { required: true, message: 'Please select your country!' }
+                  {
+                    required: true,
+                    message: "Please select receipent's country!"
+                  }
                 ]
               })(
                 <Select placeholder="Country">
@@ -102,12 +105,26 @@ const AddressForm = ({ form, onSubmit }) => {
             <FormItem>
               {getFieldDecorator('postalCode', {
                 rules: [
-                  { required: true, message: 'Please input your postal code!' }
+                  {
+                    required: true,
+                    message: "Please input recipient's postal code!"
+                  }
                 ]
               })(<Input placeholder="Postal code" />)}
             </FormItem>
           </Col>
         </Row>
+
+        <FormItem
+          style={{
+            margin: '.5rem 0',
+            maxWidth: 150
+          }}
+        >
+          {getFieldDecorator('promoCode', {
+            rules: []
+          })(<Input placeholder="Promo code" />)}
+        </FormItem>
 
         <BrowserView>
           <FormItem>
