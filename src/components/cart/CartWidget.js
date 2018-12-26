@@ -6,6 +6,7 @@ import SideSpan from '../util/SideSpan';
 import SideSpanClear from '../util/SideSpanClear';
 
 import './CartWidget.css';
+import CartWidgetItem from './CartWidgetItem';
 
 const CartWidget = ({ cart, showCheckoutBtn = true }) => {
   const cart2 = cart || {};
@@ -21,44 +22,7 @@ const CartWidget = ({ cart, showCheckoutBtn = true }) => {
       <List
         itemLayout="horizontal"
         dataSource={items}
-        renderItem={item => (
-          <List.Item>
-            <List.Item.Meta
-              // avatar={
-              //   <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-              // }
-              title={<a href="https://ant.design">{item.name}</a>}
-              // description={item.name}
-            />
-
-            <span
-              style={{
-                width: '100%',
-                textAlign: 'right',
-                maxWidth: 100
-              }}
-            >
-              <Badge
-                count={item.quantity}
-                showZero
-                style={{
-                  backgroundColor: '#fff',
-                  color: '#999',
-                  boxShadow: '0 0 0 1px #d9d9d9 inset'
-                }}
-              >
-                <img
-                  style={{
-                    width: '100%',
-                    maxWidth: 50
-                  }}
-                  alt="logo"
-                  src={item.imgSrc}
-                />
-              </Badge>
-            </span>
-          </List.Item>
-        )}
+        renderItem={item => <CartWidgetItem item={item} />}
       />
 
       <div

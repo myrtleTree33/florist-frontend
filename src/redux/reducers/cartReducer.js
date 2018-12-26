@@ -68,8 +68,24 @@ function cartAdd(state, action) {
   };
   const newState = {
     ...state,
-    items: [...state.items, newItem]
+    items: [...state.items]
   };
+
+  // if not new id, then increment
+  let isFound = false;
+  for (let i = 0; i < newState.items.length; i++) {
+    const currItem = newState.items[i];
+    if (id === currItem.id) {
+      currItem.quantity += quantity;
+      isFound = true;
+      break;
+    }
+  }
+
+  // if new id, then add item directly
+  if (!isFound) {
+    newState.items = [...newState.items, newItem];
+  }
   saveStorage('cart', newState);
   return newState;
 }

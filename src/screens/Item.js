@@ -2,29 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { asyncReactor } from 'async-reactor';
 
 import Item from '../components/item/Item';
 import { cartAdd } from '../redux/actions/cartActions';
+import { getItem } from '../redux/services/itemService';
 
-const ItemScreen = ({ history, match, cartAdd }) => {
-  const id = match.params.id;
+function Loader() {
+  return <b>Loading ...</b>;
+}
 
-  // TODO replace with call to API
-  const item = {
-    id: '43242',
-    name: 'flower combi A',
-    imgSrc: [
-      'https://www.fleurboutique.sg/wp-content/uploads/Cotton-Magic-50-688x688.jpg',
-      'https://files.gamebanana.com/img/ico/sprays/patrick_star_2_preview_2.png',
-      'https://files.gamebanana.com/img/ico/sprays/patrick_star_2_preview_2.png',
-      'https://files.gamebanana.com/img/ico/sprays/patrick_star_2_preview_2.png'
-    ],
-    price: {
-      currency: 'SGD',
-      value: '24.00'
-    },
-    description: 'The perfect bloom to suit your day.'
-  };
+const ItemScreen = async ({ history, match, cartAdd }) => {
+  const { id } = match.params;
+  const item = await getItem(parseInt(id, 10));
 
   return <Item history={history} item={item} cartAdd={cartAdd} />;
 };
@@ -46,4 +36,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(ItemScreen));
+)(withRouter(asyncReactor(ItemScreen, Loader)));

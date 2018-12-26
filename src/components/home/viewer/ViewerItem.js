@@ -5,8 +5,8 @@ import SideSpan from '../../util/SideSpan';
 import SideSpanClear from '../../util/SideSpanClear';
 
 const ViewerItem = ({ item, history }) => {
-  const { id, imgSrc, price, landscapeImg, gist } = item;
-  const { currency, value } = price || {};
+  const { id, name, price, landscapeImg, gist } = item;
+  const { value } = price || {};
   const cost = `$${value}`;
 
   return (
@@ -31,7 +31,9 @@ const ViewerItem = ({ item, history }) => {
         }}
       >
         <SideSpan align="left">
-          <div>Name - {cost}</div>
+          <div>
+            {name} - <b>{cost}</b>
+          </div>
           <div>{gist}</div>
         </SideSpan>
         <SideSpan align="right">

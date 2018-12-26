@@ -71,7 +71,7 @@ class App extends Component {
     return (
       <div className="App">
         <Layout className="layout" style={{ minHeight: '100vh' }}>
-          <div
+          {/* <div
             style={{
               textAlign: 'center',
               fontSize: '0.8em',
@@ -80,7 +80,7 @@ class App extends Component {
             }}
           >
             Promotional items go here
-          </div>
+          </div> */}
           <Header
             style={{
               background: '#fff'
@@ -102,7 +102,17 @@ class App extends Component {
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="1">
-                <Link to="/">Home</Link>
+                <Link to="/">
+                  <span
+                    style={{
+                      fontFamily: 'Luckiest Guy, cursive',
+                      color: '#000',
+                      fontSize: '1.5em'
+                    }}
+                  >
+                    Rocketflorist.co
+                  </span>
+                </Link>
               </Menu.Item>
               {isAuthenticated() ? (
                 <Menu
@@ -127,11 +137,9 @@ class App extends Component {
 
                   <Menu.Item key="9.2">
                     <Dropdown overlay={loginMenu} placement="bottomCenter">
-                      <a className="ant-dropdown-link" href="#">
-                        <Link to="/profile">
-                          <Icon type="user" style={{ fontSize: '1.2rem' }} />
-                        </Link>
-                      </a>
+                      <Link to="/profile" className="ant-dropdown-link">
+                        <Icon type="user" style={{ fontSize: '1.2rem' }} />
+                      </Link>
                     </Dropdown>
                   </Menu.Item>
                 </Menu>

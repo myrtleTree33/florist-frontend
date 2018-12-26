@@ -10,14 +10,19 @@ const Contact = () => {
   return (
     <div>
       <PageHeader text="Contact us" />
-      <WideReadableDiv>
+      <WideReadableDiv maxWidth={800}>
+        <p>We're here to help! Please reach out to us:</p>
         <div>
           <Row>
-            <Col span={3}>Telegram</Col>
-            <Col span={21}>{'@florist'}</Col>
+            <Col span={3}>
+              <b>Telegram</b>
+            </Col>
+            <Col span={21}>{'@rocketflorist'}</Col>
           </Row>
           <Row>
-            <Col span={3}>Address</Col>
+            <Col span={3}>
+              <b>Address</b>
+            </Col>
             <Col span={21}>34 Webdings Avenue</Col>
           </Row>
         </div>

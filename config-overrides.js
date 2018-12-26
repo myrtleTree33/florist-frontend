@@ -8,7 +8,9 @@ module.exports = function override(config, env) {
   );
   config = rewireLess.withLoaderOptions({
     modifyVars: {
-      '@primary-color': '#1DA57A',
+      '@font-family':
+        'Open Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif',
+      '@primary-color': '#FF6F69',
       '@menu-inline-toplevel-item-height': '20px',
       '@menu-item-height': '20px',
       '@layout-body-background': '#fff'
