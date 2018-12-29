@@ -12,18 +12,18 @@ const cartStr = retrieveStorage('cart');
 
 const dummyState = {
   items: [
-    {
-      id: '13242',
-      name: 'flower config A',
-      quantity: 9,
-      imgSrc: 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg'
-    },
-    {
-      id: '1231221',
-      name: 'flower config B',
-      quantity: 5,
-      imgSrc: 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg'
-    }
+    // {
+    //   id: '13242',
+    //   name: 'flower config A',
+    //   quantity: 9,
+    //   imgSrc: 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg'
+    // },
+    // {
+    //   id: '1231221',
+    //   name: 'flower config B',
+    //   quantity: 5,
+    //   imgSrc: 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg'
+    // }
   ],
   personalMessage: 'Personal message field',
   specialRequest: 'Special request field'

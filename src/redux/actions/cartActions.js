@@ -5,10 +5,10 @@ import {
   CART_SET_FIELD
 } from '../constants/cartConstants';
 
-export function cartAdd({ id, quantity }) {
+export function cartAdd(item) {
+  const { id, quantity, name, landscapeImg } = item;
   // TODO replace placeholders
-  const name = 'flower config A';
-  const imgSrc = 'https://m.media-amazon.com/images/I/51z7gY5iSOL._AA256_.jpg';
+  const imgSrc = landscapeImg;
   return {
     type: CART_ADD,
     payload: { id, name, quantity, imgSrc }

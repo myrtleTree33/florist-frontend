@@ -6,13 +6,13 @@ import { Divider, Button } from 'antd';
 import { isMobile } from 'react-device-detect';
 
 const ItemDescription = ({ history, item, cartAdd }) => {
-  const { id, name, imgSrc, price, description } = item;
-  const { currency, value } = price;
+  const { name, price, description } = item;
+  const { value } = price;
   const cost = `$${value}`;
 
   const handleClick = () => {
     history.push('/cart');
-    cartAdd({ id });
+    cartAdd(item);
   };
 
   return (
