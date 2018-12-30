@@ -9,7 +9,7 @@ const Viewer = ({ items, history }) => {
   return (
     <WideReadableDiv>
       <List
-        grid={{ gutter: 30, column: 3 }}
+        grid={{ gutter: 30, xs: 1, sm: 2, md: 3 }}
         dataSource={items}
         renderItem={item => (
           <List.Item>
