@@ -12,13 +12,13 @@ import SignupScreen from './screens/Signup';
 import CartWidgetScreen from './screens/CartWidget';
 import CartScreen from './screens/Cart';
 import ProfileScreen from './screens/Profile';
-import TosScreen from './screens/Tos';
 import ContactScreen from './screens/Contact';
 
 import './App.css';
 import CheckoutScreen from './screens/Checkout';
 import ItemScreen from './screens/Item';
 import WideReadableDiv from './components/util/WideReadableDiv';
+import { isMobile } from 'react-device-detect';
 
 const { Header, Content, Footer } = Layout;
 
@@ -184,7 +184,6 @@ class App extends Component {
               <Route path="/login" component={LoginScreen} />
               <Route path="/signup" component={SignupScreen} />
               <Route path="/contact" component={ContactScreen} />
-              <Route path="/tos" component={TosScreen} />
               <PrivateRoute path="/profile" component={ProfileScreen} />
             </Switch>
             <Switch>
@@ -203,15 +202,16 @@ class App extends Component {
               <Row
                 gutter={16}
                 style={{
-                  textAlign: 'left',
+                  textAlign: isMobile ? 'center' : 'left',
                   fontSize: '.8em'
                 }}
               >
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row" xs={24} sm={8}>
                   <div
                     className="gutter-box"
                     style={{
-                      marginBottom: '.5rem'
+                      marginTop: isMobile ? '.5rem' : 0,
+                      marginBottom: isMobile ? 0 : '.5rem'
                     }}
                   >
                     <b>General</b>
@@ -219,40 +219,36 @@ class App extends Component {
                   <Link to="/about" className="footerLink">
                     <div className="gutter-box">About us</div>
                   </Link>
-                  <Link to="/tos" className="footerLink">
-                    <div className="gutter-box">Terms of service</div>
-                  </Link>
                 </Col>
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row" xs={24} sm={8}>
                   <div
                     className="gutter-box"
                     style={{
-                      marginBottom: '.5rem'
+                      marginTop: isMobile ? '.5rem' : 0,
+                      marginBottom: isMobile ? 0 : '.5rem'
                     }}
                   >
-                    <b>Products</b>
+                    <b>Social</b>
                   </div>
                   <Link to="/" className="footerLink">
-                    <div className="gutter-box">Be mine?</div>
+                    <div className="gutter-box">Facebook</div>
                   </Link>
                   <Link to="/" className="footerLink">
-                    <div className="gutter-box">Anniversaries</div>
-                  </Link>
-                  <Link to="/" className="footerLink">
-                    <div className="gutter-box">Birthdays</div>
+                    <div className="gutter-box">Instagram</div>
                   </Link>
                 </Col>
-                <Col className="gutter-row" span={8}>
+                <Col className="gutter-row" xs={24} sm={8}>
                   <div
                     className="gutter-box"
                     style={{
-                      marginBottom: '.5rem'
+                      marginTop: isMobile ? '.5rem' : 0,
+                      marginBottom: isMobile ? 0 : '.5rem'
                     }}
                   >
                     <b>Let us help you</b>
                   </div>
-                  <Link to="/profile" className="footerLink">
-                    <div className="gutter-box">My account</div>
+                  <Link to="/geton" className="footerLink">
+                    <div className="gutter-box">License our software</div>
                   </Link>
                   <Link to="/contact" className="footerLink">
                     <div className="gutter-box">Contact us</div>
